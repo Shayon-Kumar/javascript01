@@ -25,8 +25,23 @@ playGame('paper');
   ">
     Scissors
   </button>
+  <button onclick="
+      scores.wins = 0;
+      scores.losses = 0;
+      scores.ties = 0;
+      localStorage.removeItem('scores');
 
+  ">
+    Reset
+  </button>
   <script>
+    let scores = JSON.parse(localStorage.getItem('scores')) || { wins: 0, losses: 0, ties: 0 };
+    /*
+    if (scores === null) {
+      scores = { wins: 0, losses: 0, ties: 0 };
+    }
+*/
+
     function playGame(playerMove) {
       const computerMove = pickComputerMove();
       let result = '';
@@ -36,17 +51,17 @@ playGame('paper');
         } else if (computerMove === 'Paper') {
           result = 'You Win.';
         } else { result = 'Tie.'; }
-        alert(`You pick ${playerMove}, Computer pick ${computerMove}.${result}`)
+
       } else if (playerMove === 'rock') {
         let result = '';
         if (computerMove === 'Rock') {
           result = 'Tie.';
         } else if (computerMove === 'Paper') {
-          result = 'You Lose';
+          result = 'You Lose.';
         } else {
           result = 'You Won.';
         }
-        alert(`You pick Rock, Computer pick ${computerMove}.${result}`)
+
       } else {
         let result = '';
         if (computerMove === 'Paper') {
@@ -56,10 +71,22 @@ playGame('paper');
         } else {
           result = 'You Lose.';
         }
-        alert(`You pick Paper, Computer pick ${computerMove}.${result}`)
       }
 
+      if (result === 'You Win.') {
+        scores.wins += 1;
+      } else if (result === 'You Lose.') {
+        scores.losses += 1;
+      } else {
+        scores.ties += 1;
+      }
+
+      localStorage.setItem('scores', JSON.stringify(scores));
+
+      alert(`You pick Paper, Computer pick ${computerMove}.${result}
+Win: ${scores.wins}, Losses: ${scores.losses}, Ties: ${scores.ties}`)
     }
+
     function pickComputerMove() {
       const move = Math.random();
       let computerMove = '';
