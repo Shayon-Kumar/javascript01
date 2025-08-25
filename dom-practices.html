@@ -8,7 +8,29 @@
 </head>
 
 <body>
+  <p>You Subscribe Button</p>
+  <button class="subscribe-button" onclick="clickSubscribe()">Subscribe</button>
+  <br>
+  <br>
+  <input type="text" class="input">
+  <p class="output"></p>
 
+  <script>
+    function clickSubscribe() {
+      let subscribeButton = document.querySelector('.subscribe-button');
+      if (subscribeButton.innerText === 'Subscribe') {
+        subscribeButton.innerText = 'Subscribed';
+      } else {
+        subscribeButton.innerText = 'Subscribe';
+      }
+    }
+
+    const inputField = document.querySelector('.input');
+    const output = document.querySelector('.output');
+    inputField.addEventListener('keyup', function () {
+      output.innerText = inputField.value;
+    });
+  </script>
 </body>
 
 </html>
