@@ -5,84 +5,125 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>calculator</title>
+  <style>
+    body {
+      background-color: aliceblue;
+    }
+
+    .number-button {
+      background-color: gray;
+      border: none;
+      padding: 10px 15px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 30px;
+    }
+
+    .oparator-button {
+      background-color: #bbdce5;
+      border: none;
+      padding: 10px 15px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 30px;
+    }
+
+    .qual-button {
+      background-color: #468a9a;
+      border: none;
+      padding: 10px 15px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 30px;
+    }
+
+    .clear-button {
+      background-color: #e4004b;
+      border: none;
+      padding: 10px 15px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 30px;
+    }
+  </style>
 </head>
 
 <body>
   <p class="result"></p>
   <p>
-    <button onclick="
+    <button class="number-button" onclick="
       calculate('1');">1
     </button>
-    <button onclick="
+    <button class="number-button" onclick="
             calculate('2');">2
     </button>
-    <button onclick="
+    <button class="number-button" onclick="
      calculate('3');">
       3
     </button>
-    <button onclick="
+    <button class="oparator-button" onclick="
     calculate('+');">
       +
     </button>
 
   </p>
   <p>
-    <button onclick="
+    <button class="number-button" onclick="
       calculate('4');">
       4
     </button>
-    <button onclick="
+    <button class="number-button" onclick="
     calculate ('5');">
       5
     </button>
-    <button onclick="
+    <button class="number-button" onclick="
     calculate('6');">
       6
     </button>
-    <button onclick="
+    <button class="oparator-button" onclick="
     calculate ('-');">
       -
     </button>
   </p>
   <p>
-    <button onclick="
+    <button class="number-button" onclick="
       calculate('7');">
       7
     </button>
-    <button onclick="
+    <button class="number-button" onclick="
     calculate('8');">
       8
     </button>
-    <button onclick="
+    <button class="number-button" onclick="
     calculate('9');">
       9
     </button>
-    <button onclick="
+    <button class="oparator-button" onclick="
     calculate('*');">
       *
     </button>
   </p>
   <p>
-    <button onclick="
+    <button class="number-button" onclick="
       calculate('0');">
       0
     </button>
-    <button onclick="
+    <button class="number-button" onclick="
     calculate('.')">
       .
     </button>
-    <button onclick="
+    <button class="qual-button" onclick="
     result()
     
     ">
       =
     </button>
-    <button onclick="
+    <button class="oparator-button" onclick="
     calculate('/')">
       /
     </button>
   </p>
-  <button onclick="
+  <button class="clear-button" onclick="
   document.querySelector('.result').innerText = '';">
     Clear
   </button>
