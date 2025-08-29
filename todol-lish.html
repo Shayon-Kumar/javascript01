@@ -24,7 +24,15 @@
 
       for (let i = 0; i < todoList.length; i++) {
         const todo = todoList[i];
-        const html = `<p>${todo.name} - ${todo.date}</p>`;
+        const html = `
+        <p>
+          ${todo.name} - ${todo.date}
+          <button 
+          onclick="
+          todoList.splice(${i} , 1);
+          randerTodoList();
+          ">Delete</button>
+          </p>`;
         htmlElement += html;
       }
       document.querySelector('.js-todo').innerHTML = htmlElement;
