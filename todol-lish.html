@@ -9,6 +9,44 @@
 
 <body>
   <p>To Do List</p>
+  <input class="js-todo-text" type="text" placeholder="Write ToDo">
+  <input type="date" class="js-todo-date">
+  <button class="js-todo-add-button" onclick="addTodo()">Add</button>
+  <div class="js-todo">
+
+  </div>
+
+  <script>
+    const todoList = [];
+    randerTodoList()
+    function randerTodoList() {
+      let htmlElement = '';
+
+      for (let i = 0; i < todoList.length; i++) {
+        const todo = todoList[i];
+        const html = `<p>${todo.name} - ${todo.date}</p>`;
+        htmlElement += html;
+      }
+      document.querySelector('.js-todo').innerHTML = htmlElement;
+    }
+
+
+    function addTodo() {
+      const inputElement = document.querySelector('.js-todo-text');
+      const dateElement = document.querySelector('.js-todo-date');
+      const name = inputElement.value;
+      const date = dateElement.value;
+      const todo = { name, date };
+      todoList.push(todo);
+      console.log(todoList);
+      randerTodoList()
+      inputElement.value = '';
+      dateElement.value = "";
+    }
+
+
+
+  </script>
 
 </body>
 
