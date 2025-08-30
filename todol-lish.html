@@ -5,19 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToDo List</title>
+  <style>
+    .todo-text {
+      padding: 10px;
+    }
+
+    .todo-date {
+      padding: 10px;
+    }
+
+    .todo-add-button {
+      padding: 12px 30px;
+      background-color: green;
+      border: none;
+      font-weight: bold;
+    }
+
+    .todo-delete-button {
+      padding: 12px 30px;
+      background-color: red;
+      border: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
   <p>To Do List</p>
-  <input class="js-todo-text" type="text" placeholder="Write ToDo">
-  <input type="date" class="js-todo-date">
-  <button class="js-todo-add-button" onclick="addTodo()">Add</button>
+  <input class="js-todo-text todo-text" type="text" placeholder="Write ToDo">
+  <input type="date" class="js-todo-date todo-date">
+  <button class="js-todo-add-button todo-add-button" onclick="addTodo()">Add</button>
   <div class="js-todo">
 
   </div>
 
   <script>
-    const todoList = [];
+    const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
     randerTodoList()
     function randerTodoList() {
       let htmlElement = '';
@@ -27,10 +50,11 @@
         const html = `
         <p>
           ${todo.name} - ${todo.date}
-          <button 
+          <button  class="todo-delete-button"
           onclick="
           todoList.splice(${i} , 1);
           randerTodoList();
+          saveTodos();
           ">Delete</button>
           </p>`;
         htmlElement += html;
@@ -46,12 +70,14 @@
       const date = dateElement.value;
       const todo = { name, date };
       todoList.push(todo);
-      console.log(todoList);
-      randerTodoList()
+      saveTodos();
+      randerTodoList();
       inputElement.value = '';
       dateElement.value = "";
     }
-
+    function saveTodos() {
+      localStorage.setItem('todoList', JSON.stringify(todoList));
+    }
 
 
   </script>
